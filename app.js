@@ -2,12 +2,14 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var cheerio = require("cheerio");
+var shortid = require('shortid');
 
 app.get('/', function (req, res) {
-	  res.send('Hello World! YEAH !');
+  id = shortid.generate();
+  res.redirect('/20minutes/' + id);  
 });
 
-app.get('/20minutes', function (req, res) {
+app.get('/20minutes/:id', function (req, res) {
   request("http://www.20minutes.fr/sport/football/1722139-20151102-ligue-champions-madrid-raphael-varane-enfin-trouve-place", function(error, response, body) {
     if (!error && response.statusCode == 200) {
        var $ = cheerio.load(body);
