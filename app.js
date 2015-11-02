@@ -6,11 +6,13 @@ app.get('/', function (req, res) {
 	  res.send('Hello World! YEAH !');
 });
 
-app.get('/20minutes', function(req, res) {
-  request({
-    uri: "http://www.sitepoint.com",
-  }, function(error, response, body) {
-    req.send(body);
+app.get('/20minutes', function (req, res) {
+  request("http://www.20minutes.fr/", function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+       res.send(body);
+    } else {
+       res.send("Error" + response.statusCode);
+    }
   });
 });
 
