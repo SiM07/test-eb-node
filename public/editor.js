@@ -1,3 +1,3 @@
 jQuery(document).ready(function() {
-  jQuery('h1').hallo();
+  jQuery('.lt-content p').hallo();
 });
